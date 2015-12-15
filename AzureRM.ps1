@@ -5,8 +5,8 @@ Login-AzureRmAccount
 # Login-AzureRmAccount -TenantId xxxx
 
 # To view all subscriptions for your account
-Get-AzureRmSubscription -SubscriptionId 24088123-87f5-4d14-910e-b92e6eba68ce
-Get-AzureRmSubscription -TenantId 589c485d-a929-4cc0-bd44-2fcb6bdb47fa #MSDN
+Get-AzureRmSubscription -SubscriptionId 
+Get-AzureRmSubscription -TenantId  #MSDN
 
 # To select a default subscription for your current session
 Get-AzureRmSubscription –SubscriptionName “Visual Studio Premium with MSDN” | Select-AzureRmSubscription
@@ -53,7 +53,7 @@ $subscriptionName = (Get-AzureSubscription).SubscriptionName | Out-GridView -Tit
 Select-AzureSubscription -SubscriptionName $subscriptionName
 
 
-Select-AzureSubscription -SubscriptionId 24088123-87f5-4d14-910e-b92e6eba68ce
+Select-AzureSubscription -SubscriptionId 
 
 $storageAccountName = (Get-AzureStorageAccount).StorageAccountName | Out-GridView -Title "Select Azure Storage Account" -PassThru
 
