@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+  },
+  "variables": {
+    "clientSubnetAddressPrefix": "10.100.2.0/24",
+    "clientSubnetName": "Clients",
+    "pubSubnetAddressPrefix": "10.100.0.0/24",
+    "pubSubnetName": "Public",
+    "resourceLocation": "North Central US",
+    "serverSubnetAddressPrefix": "10.100.1.0/24",
+    "serverSubnetName": "Servers",
+    "virtualNetworkName": "CIENCUSVN01",
+    "vnetAddressSpace": "10.100.0.0/16"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[variables('virtualNetworkName')]",
+      "location": "[variables('resourceLocation')]",
+      "tags": {
+        "displayName": "VirtualNetwork"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('vnetAddressSpace')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('PubSubnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('PubSubnetAddressPrefix')]"
+            }
+          },
+          {
+            "name": "[variables('serverSubnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('serverSubnetAddressPrefix')]"
+            }
+          },
+          {
+            "name": "[variables('clientSubnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('clientSubnetAddressPrefix')]"
+            }
+          }
+        ]
+      } //VNet Properties close
+    }
+  ],
+    "outputs": {
+    }
+}
